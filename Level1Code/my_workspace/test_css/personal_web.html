@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!-- html主要告诉浏览器如何显示一些内容,CSS(层叠样式表)用来改变HTML元素的样式，比如颜色、大小、边框 -->
+<html>
+    <head>
+        <!-- 字符编码设置，否则打开时有可能会乱码 -->
+        <meta charset="utf-8">
+        <title>PDF'S Web</title>
+    </head>
+    <body>
+        <!-- 添加主标题 -->
+        <h1 style="color:green;">PDF的个人网页</h1>
+        <!-- 添加水平线 -->
+        <hr style="height:5px;width:1000px;"/>
+        <!-- px是网页中的一个长度单位，类似“千米” -->
+        <!-- 添加段落 -->
+        <p>姓名：PDF</p>
+        <p>年龄：34</p>
+        <!-- <p>很年轻</p>
+        <p>很漂亮</p> -->
+        <p style="background-color:lightgrey;">
+            <!-- 设置斜体 -->
+            <i>我的爱好包括编程，踢球，喝茶等。并喜欢和人交流技术，人文。</i>
+            <!-- br的作用是换行 -->
+            <br/>
+            <!-- 在段落中设置斜体 -->
+            <!-- <p>我是这个世界上<i>最美丽</i>的小姑娘</p> -->
+            <!-- 设置粗体 -->
+            <b>我尤其喜欢美食</b>
+            <!-- 在段落中设置粗体 -->
+            <!-- <p>这句话的<b>重点</b>是没有重点</p> -->
+            <br/>
+            <!-- u元素实现文字带下划线 -->
+            <u style="font-size:10px;">但我不喜欢陌生人</u>
+            <!-- 在段落中使用下划线 -->
+            <!-- <p>我喜欢美食<u>但不喜欢陌生人</u></p> -->
+        </p>
+        <p style="font-size:20px;">这是我本人的照片</p>
+        <!-- img元素实现添加图片，src属性是必需的，它的值是图像文件的url，也就是引用该图像文件的绝对路径或相对路径 -->
+        <img src="http://wx2.sinaimg.cn/thumb180/71f81b09ly1fgjk9dvzifj20bq0e8q5o.jpg" alt="">
+        <hr/>
+        <!-- ul和li元素实现无序列表，ul的作用是告诉浏览器“我是无序列表”，li的作用就是用来书写列表里面每行的内容 -->
+        <!-- <ul>
+            <li>我是无序列表的第一行</li>
+            <li>我是无序列表的第二行</li>
+        </ul> -->
+        <div style="border-width:1px;border-color:black;border-style:dotted;">
+            <!-- 上述style为HTML元素设置边框，依次是边框宽度、颜色和样式 -->
+            <h2>我去过的地方</h2>
+            <ul>
+                <li>北京</li>
+                <li>上海</li>
+                <li>西雅图</li>
+            </ul>
+        </div>
+
+        <hr/>
+        <!-- ol和li元素实现有序列表，ol的作用是告诉浏览器“我是有序列表”，li的作用就是用来书写列表里面每行的内容 -->
+        <div style="border-width:1px;border-color:black;border-style:solid;">
+            <h2>我最近的计划</h2>
+            <ol>
+                <li style="margin-top:20px">去西藏</li>
+                <li style="margin-top:20px">去日本</li>
+                <li style="margin-top:20px">去墨尔本</li>
+            </ol>
+        </div>
+
+        <hr/>
+        <h2>我的朋友们</h2>
+        <!-- table、tr和td元素实现编写表格 ，其中table定义HTML表格，就是告诉浏览器“我是表格”；tr定义表格的行；td定义表格的列；border是table元素的一个属性，作用是设置表格外面的边框-->
+        <table border="1" style="border-color:blue;">
+            <tr>
+                <td>李俊</td>
+                <td>大学同学</td>
+            </tr>
+            <tr>
+                <td>丽琼</td>
+                <td>同事</td>
+            </tr>
+            <tr>
+                <td>丁小娟</td>
+                <td>闺蜜</td>
+            </tr>
+        </table>
+        <hr/>
+        <!-- video元素用于在网页中插入视频，src属性是必需的，它的值是视频文件的url，也就是引用该视频的绝对路径或相对路径 ;controls属性是设置我们视频底部的控制条-->
+        <h2>我拍过的视频</h2>
+        <video style="width:200px;height:200px;" src="http://resource.haorenao.cn/cxy720-2.mp4" autoplay poster="posterimage.jpg" controls></video>
+        <hr/>
+        <h2>我的微博链接</h2>
+        <!-- a标签定义超链接，用于从一个页面跳到另一个页面，最重要的属性是href，指示链接的目标 -->
+        <a href="http://weibo.com/haorenao">PDF个人编程</a>
+
+    </body>
+</html>

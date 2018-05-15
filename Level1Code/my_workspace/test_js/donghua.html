@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>donghua_test</title>
+        <style media="screen">
+            .box{
+                height: 200px;
+                width:200px;
+                background-color: #f60;
+            }
+        </style>
+    </head>
+    <body>
+        <button type="button" name="button" class="hide">隐藏</button>
+        <button type="button" name="button" class="show">显示</button>
+        <button type="button" name="button" class="toggle">toggle</button>
+        <button type="button" name="button" class="fade-in">fadeIn</button>
+        <button type="button" name="button" class="fade-out">fadeOut</button>
+        <button type="button" name="button" class="fadeToggle">fadeToggle</button>
+        <div class="box"></div>
+        <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script type="text/javascript">
+            $('.hide').click(function(){
+                $('.box').hide();
+            })
+            $('.show').click(function(){
+                $('.box').show();
+            })
+            $('.toggle').click(function(){
+                $('.box').toggle();
+            })
+            //fade-in和fade-out可以设置动画时间
+            $('.fade-in').click(function(){
+                $('.box').fadeIn();
+            })
+            $('.fade-out').click(function(){
+                $('.box').fadeOut(3000);
+            })
+            $('.fadeToggle').click(function(){
+                $('.box').fadeToggle();
+            })
+        </script>
+    </body>
+</html>

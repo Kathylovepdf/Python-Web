@@ -1,0 +1,60 @@
+.div-square{
+    width: 200px;
+    height: 200px;
+    background-color: #06f;
+    color: #fff;
+}
+
+/* hover伪类，当用户鼠标悬停在相应的元素上时，该元素就会渲染伪类里定义的样式 */
+.div-square:hover{
+    background-color: #f60
+}
+
+.list{
+    width: 200px;
+    list-style: none;
+    border: 1px solid #ccc;
+    padding: 0;
+}
+
+.list li{
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+/* 这个伪类的作用指向当前选择器选中元素组的最后一个指定样式 */
+.list li:last-child{
+    border: none;
+}
+
+/* 伪元素即我们伪造的元素，可以显示在页面中，但是dom树中没有，因为它是通过css创建的元素，不是通过html创建的 */
+.list::before{
+    content: "编程语言排行";
+    display: block;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+
+.list::after{
+    content: "编程语言排行";
+    display: block;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+
+p{
+    color: #000;
+
+}
+
+/* 媒体查询：查询媒体特征，当媒体类型匹配展示文档 ，所使用的设备类型，会应用相应样式表或样式规则 ，即当满足@media（）括号中的条件时，就会应用其中的样式规则了。有一点需要注意，默认样式要写在媒体查询之前，否则媒体查询的效果会被覆盖。*/
+@media (max-width:700px) {
+    p{
+        color: #f60;
+    }
+}
+@media (min-width:700px) and (max-width:1100px){
+    p{
+        color: #06f;
+    }
+}

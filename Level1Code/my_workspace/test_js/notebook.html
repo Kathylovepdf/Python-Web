@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>PDF's notebook</title>
+    </head>
+    <body>
+        <h1>PDF的笔记本</h1>
+        <p>标题：</p>
+        <input type="text" name="" value="" id="title">
+        <p>内容：</p>
+        <textarea name="name" rows="8" cols="80" id="content"></textarea>
+        <button type="button" name="button" id="submit">提交</button>
+        <p>以往内容：</p>
+        <div id="history"></div>
+        <script type="text/javascript">
+            var submit=document.getElementById('submit');
+            submit.onclick=function(){
+                var title_element=document.getElementById('title');
+                var title=title_element.value;
+                var content_element=document.getElementById('content');
+                var content=content_element.value;
+
+                // alert(title);
+                // alert(content);
+                var history_element=document.getElementById('history');
+                var history=history_element.innerHTML;
+                history=history +'<p>标题：'+ title+ '</p>';
+                history=history +'<p>内容：'+ content+ '</p>';
+                history=history +'<hr>';
+
+                // alert(history);
+                history_element.innerHTML=history;
+            };
+        </script>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>js_project</title>
+        <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    </head>
+    <body>
+        <div style="text-align:center">
+            <h1>PDF's的茶叶铺子</h1>
+        </div>
+        <hr>
+        <div style="text-align:center">
+            <h3>所有茶叶</h3>
+        </div>
+        <div id="all_teas" style="width:100%;">
+
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                 // Stuff to do as soon as the DOM is ready
+                 $.ajax({
+                     type:'GET', //说明获取的类型是get
+                     url:'http://resource.haorenao.cn/teas2.json', //存放数据的地址，我们要发送请求到这里
+                    //函数里面是当这个过程成功的话所要执行的程序
+                     success:function(data){
+                         var teas=data;
+                         console.log(teas); //向web控制台输出一条消息
+                         $.each(teas,function(key,value) {
+                             var title =value.title;
+                             var image =value.image;
+                             var price =value.price;
+                             var html='<div style="width:333px;height:333px;float:left;text-align:center;margin:10px;">'
+                             +'<h1>' +title+ '</h1>'
+                             +'<img style="width:200px;height:200px;" src="'+image+'">'
+                             +'<p>价格：' +price+ '</p>'
+                             +'</div>';
+                        $('#all_teas').append(html);
+                        });
+                     }
+                 });
+            });
+
+        </script>
+    </body>
+</html>

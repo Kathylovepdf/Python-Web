@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>html5_test</title>
+    </head>
+    <body>
+        <!--一篇文档可划分为head，body和foot三个部分，header标签负责head部分-->
+        <!--header 标签定义文档的页眉-->
+        <!-- nav标签定义导航链接的部分，就是导航元素 -->
+        <header>
+            <!-- 这是文档的页眉部分 -->
+            <nav style="border:1px solid #ccc;border-radius:3px;">
+                <a href="#" style="display:inline-block;padding:10px;border-right:1px solid #ccc;text-decoration:none;">页面1</a>
+                <a href="#" style="display:inline-block;padding:10px;border-right:1px solid #ccc;text-decoration:none;">页面2</a>
+                <a href="#" style="display:inline-block;padding:10px;border-right:1px solid #ccc;text-decoration:none;">页面3</a>
+            </nav>
+        </header>
+
+        <!-- section 标签定义文档中的节，比如章节、页眉、页脚或者文档中的其他部分，一个section通常由内容和标题组成，通常不推荐那些没有标题的内容用section -->
+        <section>
+            <p>这是section的内容，它属于这个网页的一部分</p>
+            <article>
+                这是单独的一篇文章，跟页面其他内容没什么关系，可以放在任意位置
+            </article>
+            <article>
+                这是另一篇文章，也可以放在任意，也可以放在任意页面
+            </article>
+        </section>
+        <section>
+            <p>这是网页内容二</p>
+            <footer>这是section的页脚</footer>
+        </section>
+
+        <!-- article标签定义外部的内容，外部内容可以是一个来自外部的新闻，或者blog的文本，亦或是来自其他外部源内容，也就是必须是完整独立内容，不与上下相关联 -->
+
+
+        <!-- footer标签定义section或document的页脚，在典型情况下，该元素包含创作者的姓名、文档的创作日期以及或者联系信息，与header有点对应的感觉 -->
+        <footer>这是网页的页脚</footer>
+    </body>
+
+    <!-- div  section  article  ，语义从无到有，逐渐增强。div没有任何语义，仅仅用作样式化；对于一段有主题的内容块，则适用section；而如果这段脱离上下文，作为完整的独立存在，则适用article -->
+</html>

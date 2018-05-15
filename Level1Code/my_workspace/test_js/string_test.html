@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>string_test</title>
+        <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    </head>
+    <body>
+        <div id="div"></div>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                 // Stuff to do as soon as the DOM is ready
+                 //这是jQuery的一个文档就绪事件，等文件加载之后运行函数
+                 var html ='<div>'
+                 + '<h1>' + 'hello' + '</h1>'
+                 + '<p>价格：' + '20元' + '</p>'
+                 + '</div>';
+                 $('body').append(html);
+
+                 var p='<p>这是插入的p标签</p>';
+                 $('div').append(p);
+            });
+        // <div style="width:333px;height:300px;float:left;text-align:center;margin:10px 0;">
+        //     <h1 style="margin:0">hello</h1>
+        //     <p>20元</p>
+        // </div>
+
+         </script>
+    </body>
+</html>

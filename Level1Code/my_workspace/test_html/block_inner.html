@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>block_inner</title>
+        <!-- 将样式抽离,这种在style标签内写css样式的方式叫内部样式表 -->
+        <!-- <style media="screen">
+            div{
+                width:150px;
+                height:150px;
+                border:1px solid #f60;
+                display:inline-block;
+            }
+        </style> -->
+
+        <link rel="stylesheet" href="block_inner.css">
+    </head>
+    <body>
+        <!--块级元素占据其父元素（容器）的整个空间，因此创建了一个“块”，如div p,总是在新行上开始，默认宽度占父级元素宽度100%，可以设置宽高等属性 ；行内元素只占据它对应标签的边框所包含的空间，如span，和其他元素在一行，宽高由内容决定，行内元素内部不能包括块级元素；行内块级元素，可以一行放多个块级元素，html标签中没有这种类型的标签，但可通过css来设置-->
+
+        <!--display：inline 设置这个属性的元素就会变成行内元素，不论之前是啥元素，设置的宽高也会失效；
+        display：block  设置这个属性的元素就会变成块级元素，不论之前是块级还是行内元素；
+        display：inner-block 设置这个属性的元素就是行内块级元素-->
+
+        <!-- <div>这是一个块级元素，默认会占一行</div> -->
+        <hr/>
+        <span>这里有三个行内元素span</span>
+        <span>会跟其他行内元素在同一行</span>
+        <span>直到这一行满了才会进入下一行</span>
+
+        <hr/>
+
+        <!-- <div style="display:inline;">这个div默认是块级元素，现在通过css变为行内元素</div>
+        <div style="display:inline">这个div默认是块级元素，现在通过css变为行内元素</div>
+        <div style="display:block">这个div默认是块级，现在通过css还是块级</div> -->
+
+        <div>
+            <header>小仙女</header>
+            <p>我是一个小仙女，小呀小仙女，我是一个小仙女，小呀小仙女</p>
+        </div>
+        <div>
+            <header>小仙女</header>
+            <p>我是一个小仙女，小呀小仙女，我是一个小仙女，小呀小仙女</p>
+        </div>
+        <div>
+            <header>小仙女</header>
+            <p>我是一个小仙女，小呀小仙女，我是一个小仙女，小呀小仙女</p>
+        </div>
+    </body>
+</html>

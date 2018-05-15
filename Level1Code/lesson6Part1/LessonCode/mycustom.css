@@ -1,0 +1,82 @@
+.ui.inverted.vertical.basic.segment.sgt1{
+    background: url(images/banner.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 700px;
+    padding-left: 40px;
+    padding-right: 40px;
+    position: relative;
+}
+.ui.inverted.center.aligned.header.slog1{
+    font-size: 50px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.ui.vertical.red.segment.last{
+    padding: 40px 40px 40px 40px;
+}
+.ui.circular.red.button{
+    width: 220px;
+}
+.ui.header.slog2{
+    font-size: 30px;
+    color: rgb(196, 196, 196);
+}
+.ui.inverted.segment.card-view{
+    height: 220px;
+}
+.ui.header.title {
+    margin-bottom: 100px;
+}
+.ui.vertical.basic.segment.sgt2>.ui.center.aligned.header {
+    font-size: 40px;
+    color: rgb(56, 56, 56);
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.ui.inverted.vertical.basic.segment.sgt3{
+    background: url(images/people-say.png);
+    background-size: cover;
+    height: 400px;
+    margin-top: 15px;
+    padding-top: 60px;
+    margin-bottom: 200px;
+    position: relative;
+}
+ .ui.inverted.vertical.basic.segment.sgt3 > .ui.center.aligned.header{
+    margin-bottom: 50px;
+}
+
+/*.ui.inverted.vertical.basic.segment.sgt3>.five.column.centered.row{
+
+}*/
+
+.five.column.centered.row >.column{
+   position: relative;
+}
+
+.ui.small.circular.image.gogo{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+.inverted.red.circular.star.icon.ic{
+    position: absolute;
+    left: 75%;
+    top: 200%;
+    transform: translate(-50%,-100%);
+}
+.ui.center.aligned.inverted.header.hd{
+    position: relative;
+    top: 150px;
+}
+
+.ui.inverted.red.circular.button.bt{
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%,-50%);
+    background: white;
+}

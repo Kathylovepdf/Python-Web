@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>array_test</title>
+        <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                //这是jQuery的一个文档就绪事件，等文件加载之后运行函数
+                 // Stuff to do as soon as the DOM is ready
+                 //数组对象是使用单独的变量名来存储一系列的值，并且可以用变量名访问任何一个值
+                 var mycars=['Saab','Volvo','BMW'];
+                 // console.log(mycars[2]);
+                 //mycars为数组名，在函数里面写上对数组每一项规定运行的代码
+                 $.each(mycars,function(value) {
+                     console.log(mycars[value]);
+                 });
+            });
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>5</title>
+        <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            //这是jQuery的一个文档就绪事件，等文件加载之后运行函数
+            $(document).ready(function() {
+                // Stuff to do as soon as the DOM is ready
+                //ajax一种与服务器交换数据的技术，可以在不重新载入整个页面的情况下更新网页的一部分
+                 $.ajax({
+                     type:'GET', //说明获取的类型是get
+                     url:'http://resource.haorenao.cn/teas2.json', //存放数据的地址，我们要发送请求到这里
+                    //函数里面是当这个过程成功的话所要执行的程序
+                     success:function(data){
+                         console.log(data); //向web控制台输出一条消息
+                     }
+                 });
+            });
+        </script>
+    </body>
+</html>

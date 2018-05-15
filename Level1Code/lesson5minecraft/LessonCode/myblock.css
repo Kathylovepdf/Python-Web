@@ -1,0 +1,66 @@
+.myblock-1{
+    box-sizing: border-box;
+    width: 64px;
+    height: 64px;
+    background: url(images/grass.png);
+    background-size: contain;
+}
+
+.myblock-2{
+    box-sizing: border-box;
+    width: 128px;
+    height: 64px;
+    background: url(images/grass.png);
+    background-size: contain;
+}
+
+.myblock-3{
+    box-sizing: border-box;
+    width: 196px;
+    height: 64px;
+    background: url(images/grass.png);
+    background-size: contain;
+}
+.flower{
+    box-sizing: border-box;
+    width: 64px;
+    height: 64px;
+    background: url(images/rose.png);
+    background-size: contain;
+    position: relative;
+    left: 32px;
+    top: 64px;
+}
+
+.point{
+    box-sizing: border-box;
+    width: 8px;
+    height: 8px;
+    background: yellow;
+}
+
+.yellow-flower{
+    box-sizing: border-box;
+    width: 64px;
+    height: 64px;
+    background: url(images/flower.png);
+    background-size: contain;
+    position: absolute;
+    left: 128px;
+}
+.bg{
+    background: teal;
+    box-sizing: border-box;
+    height: 256px;
+    width: 320px;
+    border: solid 5px orange;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50% ,-50%);
+}
+
+body{
+    background: url(images/brick.jpg);
+    margin: 0;
+}

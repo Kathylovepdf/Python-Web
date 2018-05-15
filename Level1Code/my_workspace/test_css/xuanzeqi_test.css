@@ -1,0 +1,55 @@
+/* 通用选择器就是在css文件的开头加上如下代码
+*{
+}
+会把相应的样式添加到所有的元素上 */
+*{
+    font-size: 30px;
+}
+
+body{
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+/* 下面这个为群组选择器，是一种派生选择器（由之前的选择器演变而来），当有多个选择器下有相同的属性时，可以写成一个群组选择器 */
+
+header,section{
+    border:1px solid red;
+}
+
+header{
+    padding: 10px;
+}
+
+section{
+    display: inline-block;
+    width: 200px;
+    height: 300px;
+    vertical-align: top;
+}
+
+
+div{
+    border: 1px solid green;
+    margin: 10px;
+}
+
+.right{
+    width: 600px;
+
+}
+
+/* 下面用到了子元素选择器，那个>号指的是直接子元素 */
+
+.right>header{
+    border: none;
+    border-bottom: 1px solid #ccc;
+}
+
+.right>section{
+    height: auto;
+    border: none;
+}
+
+/* 选择器是有优先级的，当多个选择器定义了不同的样式，添加给了同一个元素，浏览器知道该渲染哪一个：内联>id>类>标签（元素选择器）>伪类>通用选择器（通配符） */
