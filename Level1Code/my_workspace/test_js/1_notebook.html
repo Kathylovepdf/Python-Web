@@ -9,12 +9,14 @@
         <p>标题：</p>
         <input type="text" name="" value="" id="title">
         <p>内容：</p>
+        <!--定义多行的文本输入控件，文本区域中可容纳无限数量的文本-->
         <textarea name="name" rows="8" cols="80" id="content"></textarea>
         <button type="button" name="button" id="submit">提交</button>
         <p>以往内容：</p>
         <div id="history"></div>
         <script type="text/javascript">
             var submit=document.getElementById('submit');
+            // 函数调用和定义放在一起了
             submit.onclick=function(){
                 var title_element=document.getElementById('title');
                 var title=title_element.value;
