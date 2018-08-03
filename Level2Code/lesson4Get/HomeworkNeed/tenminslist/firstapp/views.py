@@ -1,6 +1,11 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, HttpResponse
+from firstapp.models import Article
 # Create your views here.
 
+
 def index(request):
-	return render(request,'index.html')
+	article_list = Article.objects.all()
+	context = {}
+	context['article_list'] = article_list
+	index_page = render(request, 'index.html', context)
+	return index_page
