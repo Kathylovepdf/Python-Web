@@ -78,10 +78,50 @@
             <h3 class="ui horizontal  divider header" style="">Comments</h3>
             <div class="ui comments" style="border:none">
                 <!--这里补充评论列表代码-->
+                {% for comment in comment_list %}
+                    <div class="comment">
+                        <div class="avatar">
+                            <img src="{% static 'images/default.png' %}" alt="" />
+                        </div>
+                        <div class="content">
+                            <a href="#" class="author">{{ comment.name }}</a>
+                            <div class="metadata">
+                                <div class="date">{{comment.createtime}}</div>
+                            </div>
+                            <p class="text" style="font-family: 'Raleway', sans-serif;">
+                                {{ comment.content }}
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
             <div class="ui divider"></div>
             <form class="ui error tiny form" method="post">
                 <!--这里补充评论表单代码-->
+                {% if form.errors %}
+                    <div class="ui error message">
+                        {{ form.errors }}
+                    </div>
+
+                    {% for field in form %}
+                        <div class="{{ field.errors|yesno:'error, '}} field">
+                            {{ field.label }}
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+
+                {% else %}
+                    {% for field in form %}
+                        <div class="field">
+                            {{ field.label }}
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+
+                {% endif %}
+
+                {% csrf_token %}
+
                 <button type="submit" class="ui red button" >Click</button>
             </form>
 

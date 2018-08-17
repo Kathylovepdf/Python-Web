@@ -20,7 +20,6 @@ def index(request):
     return index_page
 
 
-
 def detail(request, page_num, error_form=None):
     context = {}
     form = CommentForm

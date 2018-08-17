@@ -7,7 +7,17 @@ class Article(models.Model):
     content = models.TextField(null=True, blank=True)
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
-    createtime = models.DateField()
+    createtime = models.DateField(auto_now=True)
 
     def __str__(self):
         return self.title
+
+
+class Comment(models.Model):
+    name = models.CharField(max_length=50)
+    avatar = models.CharField(max_length=250)
+    content = models.TextField()
+    createtime = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.content

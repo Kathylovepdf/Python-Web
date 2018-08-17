@@ -20,5 +20,5 @@ from firstapp.views import index, detail
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^index/', index, name="index"),
-    url(r'^detail', detail, name="detail"),
+    url(r'^detail/', detail, name="detail"),
 ]
