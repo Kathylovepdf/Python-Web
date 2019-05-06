@@ -49,86 +49,86 @@ function division(x,y){
 // alert(result4);
 
 //获取按钮
-// var addBtn =document.getElementById('add');
-// var subBtn =document.getElementById('sub');
-// var mulBtn =document.getElementById('mul');
-// var divBtn =document.getElementById('div');
-// var resNum =document.getElementById('result');
+var addBtn =document.getElementById('add');
+var subBtn =document.getElementById('sub');
+var mulBtn =document.getElementById('mul');
+var divBtn =document.getElementById('div');
+var resNum =document.getElementById('result');
 
 //定义两个全局变量
 var a_int;
 var b_int;
 
-//为按钮添加加法
-// addBtn.onclick = function() {
-//     //调用加法，弹出结果
-//     getInputNum();
-//     var result1 =additon(a_int,b_int);
-//     // alert(result1);
-//     // resNum.innerHTML=String(result1);
-//     var resultHtml='<p>' + result1 + '</p>';
-//     resNum.innerHTML=resultHtml;
-// };
-$('#add').click(function(){
-    getInputNum();
-    var result1 =additon(a_int,b_int);
-    //用jQuery的写法
-    $('#result').html(String(result1));
-});
-//为按钮添加减法
-// subBtn.onclick =function() {
-//     //调用减法，弹出结果
-//     getInputNum();
-//     var result2 =subtraction(a_int,b_int);
-//     // alert(result2);
-//     resNum.innerHTML=String(result2);
-// };
-$('#sub').click(function(){
-    getInputNum();
-    var result2 =subtraction(a_int,b_int);
-    //用jQuery的写法
-    $('#result').html(String(result2));
-});
-//为按钮添加乘法
-// mulBtn.onclick =function() {
-//     //调用乘法，弹出结果
-//     getInputNum();
-//     var result3 =multiplication(a_int,b_int);
-//     // alert(result3);
-//     resNum.innerHTML=String(result3);
-// };
-$('#mul').click(function(){
-    getInputNum();
-    var result3 =multiplication(a_int,b_int);
-    //用jQuery的写法
-    $('#result').html(String(result3));
-});
-
-//为按钮写除法
-// divBtn.onclick =function() {
-//     //调用除法，弹出结果
-//     getInputNum();
-//     var result4 =division(a_int,b_int);
-//     // alert(result4);
-//     resNum.innerHTML=String(result4);
-// };
-$('#div').click(function(){
-    getInputNum();
-    var result4 =division(a_int,b_int);
-    //用jQuery的写法
-    $("#result").html(String(result4));
-});
-
 //获取input的值，并转化为数字
 function getInputNum() {
     //这里是局部变量
-    // var a =document.getElementById('num1').value;
-    // var b =document.getElementById('num2').value;
+    var a =document.getElementById('num1').value;
+    var b =document.getElementById('num2').value;
 
     //应用jQuery的写法
-    var a =$('#num1').val();
-    var b =$('#num2').val();
+    // var a =$('#num1').val();
+    // var b =$('#num2').val();
 
     a_int =parseInt(a,10);
     b_int =parseInt(b,10);
 }
+
+// 为按钮添加加法
+addBtn.onclick = function() {
+    //调用加法，弹出结果
+    getInputNum();
+    var result1 =additon(a_int,b_int);
+    // alert(result1);
+    // resNum.innerHTML=String(result1);
+    var resultHtml='<p>' + result1 + '</p>';
+    resNum.innerHTML=resultHtml;
+};
+// $('#add').click(function(){
+//     getInputNum();
+//     var result1 =additon(a_int,b_int);
+//     //用jQuery的写法
+//     $('#result').html(String(result1));
+// });
+//为按钮添加减法
+subBtn.onclick =function() {
+    //调用减法，弹出结果
+    getInputNum();
+    var result2 =subtraction(a_int,b_int);
+    // alert(result2);
+    resNum.innerHTML=String(result2);
+};
+// $('#sub').click(function(){
+//     getInputNum();
+//     var result2 =subtraction(a_int,b_int);
+//     //用jQuery的写法
+//     $('#result').html(String(result2));
+// });
+//为按钮添加乘法
+mulBtn.onclick =function() {
+    //调用乘法，弹出结果
+    getInputNum();
+    var result3 =multiplication(a_int,b_int);
+    // alert(result3);
+    resNum.innerHTML=String(result3);
+};
+// $('#mul').click(function(){
+//     getInputNum();
+//     var result3 =multiplication(a_int,b_int);
+//     //用jQuery的写法
+//     $('#result').html(String(result3));
+// });
+
+//为按钮写除法
+divBtn.onclick =function() {
+    //调用除法，弹出结果
+    getInputNum();
+    var result4 =division(a_int,b_int);
+    // alert(result4);
+    resNum.innerHTML=String(result4);
+};
+// $('#div').click(function(){
+//     getInputNum();
+//     var result4 =division(a_int,b_int);
+//     //用jQuery的写法
+//     $("#result").html(String(result4));
+// });

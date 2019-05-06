@@ -1,3 +1,4 @@
+//jQuery只是一个“写得少，做得多”JavaScript的函数库，简单来说，就是用它组装好的功能来代替复杂的原生JavaScript代码
 //定义两个全局变量
 var a_int;
 var b_int;
