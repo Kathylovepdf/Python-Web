@@ -7,7 +7,6 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.core.exceptions import ObjectDoesNotExist
 
 
-
 def listing(request, cate=None):
     context = {}
     if cate is None:
@@ -30,6 +29,7 @@ def listing(request, cate=None):
     context['vids_list'] = vids_list
     return render(request, 'listing.html', context)
 
+
 def detail(request, id):
     context = {}
     vid_info = Video.objects.get(id=id)
@@ -43,6 +43,7 @@ def detail(request, id):
     context['vid_info'] = vid_info
     context['like_counts'] = like_counts
     return render(request, 'detail.html', context)
+
 
 def detail_vote(request, id):
     voter_id = request.user.profile.id
@@ -69,6 +70,7 @@ def index_login(request):
             return redirect(to='list')
     context['form'] = form
     return render(request, 'register_login.html', context)
+
 
 def index_register(request):
     context = {}

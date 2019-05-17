@@ -4,11 +4,13 @@ from firstapp.forms import CommentForm
 
 # Create your views here.
 
+
 def index(request):
     article_list = Article.objects.all()
     context = {}
     context["article_list"] = article_list
     return render(request, 'index.html', context)
+
 
 def detail(request):
 

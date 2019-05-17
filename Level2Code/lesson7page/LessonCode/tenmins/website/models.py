@@ -2,6 +2,7 @@ from django.db import models
 # from faker import Factory
 from django.contrib.auth.models import User
 
+
 class Video(models.Model):
     title = models.CharField(null=True, blank=True, max_length=300)
     content = models.TextField(null=True, blank=True)
@@ -16,6 +17,7 @@ class Video(models.Model):
 class UserProfile(models.Model):
     belong_to = models.OneToOneField(to=User, related_name='profile')
     profile_image = models.FileField(upload_to='profile_image')
+
 
 class Ticket(models.Model):
     voter = models.ForeignKey(to=UserProfile, related_name='voted_tickets')

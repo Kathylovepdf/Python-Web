@@ -86,12 +86,12 @@
             {% endif %}
 
             {% for page_number in article_list.paginator.page_range %}
-                {% ifequal page_number  article_list.number %}
+                {% ifequal page_num  article_list.number %}
                     <a href="?page={{ page_number }}" class="active item" style="background-color: red; color:white">
                         {{ page_number }}
                     </a>
                 {% else %}
-                    <a href="?page={{ page_number }}" class=" item">
+                    <a href="?page={{ page_number }}" class="item">
                         {{ page_number }}
                     </a>
                 {% endifequal %}

@@ -3,6 +3,8 @@ from firstapp.models import People, Article
 # from django.template import Context, Template
 
 # Create your views here.
+
+
 def first_try(request):
     person = People(name='Spock', job='officer')
     html_string = '''
@@ -23,7 +25,14 @@ def first_try(request):
     web_page = t.render(c)
     return HttpResponse(web_page)
 
+
 def index(request):
+    print("##"*30)
+    print(request)
+    print("##"*30)
+    print(dir(request))
+    print("##"*30)
+    print(type(request))
     queryset = request.GET.get('tag')
     if queryset:
         article_list = Article.objects.filter(tag=queryset)

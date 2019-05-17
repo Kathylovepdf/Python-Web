@@ -3,6 +3,7 @@ from firstapp.models import Aritcle, Comment
 from django.template import Context, Template
 from firstapp.form import CommentForm
 
+
 def index(request):
     print(request)
     print('==='*30)
@@ -35,6 +36,7 @@ def detail(request, page_num, error_form=None):
     else:
         context['form'] = form
     return render(request, 'article_detail.html', context)
+
 
 def detail_comment(request, page_num):
     form = CommentForm(request.POST)

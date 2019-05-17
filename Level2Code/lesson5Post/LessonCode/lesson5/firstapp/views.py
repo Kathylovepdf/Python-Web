@@ -17,6 +17,7 @@ def index(request):
     index_page = render(request, 'first_web_2.html', context)
     return index_page
 
+
 def detail(request):
     if request.method == 'GET':
         form = CommentForm
@@ -32,4 +33,4 @@ def detail(request):
     comment_list = Comment.objects.all()
     context['comment_list'] = comment_list
     context['form'] = form
-    return render(request,'detail.html',context)
+    return render(request, 'detail.html', context)
