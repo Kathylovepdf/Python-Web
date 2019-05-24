@@ -1,14 +1,15 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 
 <html>
     <head>
         <meta charset="utf-8">
         <title></title>
-        <link rel="stylesheet" href="/static/css/semantic.css" media="screen" title="no title" charset="utf-8">
-        <link rel="stylesheet" href="/static/css/list_custom.css"  media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="{% static 'css/semantic.css' %}" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="{% static '/css/list_custom.css' %}"  media="screen" title="no title" charset="utf-8">
         <style type="text/css">
             body {
-                background: url(/static/images/super_blur_back2.jpg);
+                background: url({% static 'images/super_blur_back2.jpg' %});
                 background-size: cover;
             }
 
@@ -23,7 +24,7 @@
             }
 
             .five.wide.column {
-                background: url(/static/images/red_regi.jpg);
+                background: url({% static 'images/red_regi.jpg'  %});
                 background-size: cover;
                 background-position: 60% 0%;
             }
@@ -58,28 +59,30 @@
 
             <div class="eleven wide column">
                 <h4 class="ui inverted right aligned header">
-                    <a href="/login/" style="color:#ff695e;">or Login</a>
+                    <a href="{% url 'login' %}" style="color:#ff695e;">or Login</a>
                 </h4>
 
                 <form class="ui form error" method="post">
+                    {% if form.errors %}
+                      <div class="ui error message">
+                        {{form.errors}}
+                      </div>
+                      {% for field in form %}
+                        <div class="{{field.errors|yesno:'error, '}}field">
+                            {{field.label}}
+                            {{field}}
+                        </div>
+                      {% endfor %}
+                    {% else %}
+                      {% for field in form %}
+                        <div class="field">
+                            {{field.label}}
+                            {{field}}
+                        </div>
+                      {% endfor %}
+                    {% endif %}
 
-                    
-                        
-                            <div class="field">
-                                Username
-                                <input autofocus="" id="id_username" maxlength="150" name="username" type="text" required />
-                            </div>
-                        
-                            <div class="field">
-                                Password
-                                <input id="id_password1" name="password1" type="password" required />
-                            </div>
-                        
-                            <div class="field">
-                                Password confirmation
-                                <input id="id_password2" name="password2" type="password" required />
-                            </div>
-                        
+                    {% csrf_token %}
                     <button class="ui inverted red circular right floated button" type="submit">Done</button>
                 </form>
             </div>

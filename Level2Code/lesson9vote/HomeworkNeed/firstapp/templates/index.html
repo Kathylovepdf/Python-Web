@@ -21,19 +21,41 @@
         </div>
 
         <div class="right menu">
+          {% if request.user.is_authenticated %}
             <div class="item">
                 <h5 class="ui inverted header">
-                        <div class="ui avatar image">
-                            <img src="{% static 'images/default.png' %}" alt="">
-                        </div>
 
-                        <span>admin</span>
+                    <div class="ui avatar image">
+                      {% if request.user.profile.profile_image %}
+                        <img src="/upload//{{request.user.profile.profile_image}}" alt="">
+                      {% else %}
+                        <img src="{% static 'images/default.png' %}" alt="">
+                      {% endif %}
+
+                    </div>
+
+                    <span>{{request.user.username}}</span>
+
+                </h5>
+            </div>
+            <div class="item">
+                <a href="{% url 'logout' %}" class="ui inverted circular button">Logout</a>
+            </div>
+          {% else %}
+            <div class="item">
+                <h5 class="ui inverted header">
+                        <!-- <div class="ui avatar image">
+                            <img src="{% static 'images/default.png' %}" alt="">
+                        </div> -->
+
+                        <span>{{request.user.username}}</span>
 
                     </h5>
             </div>
             <div class="item">
-                <a href="#logout/" class="ui inverted circular button">Logout</a>
+                <a href="{% url 'login' %}" class="ui inverted circular button">Signup/Login</a>
             </div>
+          {% endif %}
         </div>
     </div>
     <div class="ui inverted segment container nav">
@@ -52,7 +74,7 @@
             <div class="column">
                 <a class="ui fluid card" href="{% url 'detail' article.id %}">
                     <div class="image">
-                        <img src="{% static article.img %}" alt="" style="height:200px;object-fit: cover;">
+                        <img src="{% static '' %}{{ article.img }}" alt="" style="height:200px;object-fit: cover;">
                     </div>
                 </a>
 
@@ -64,7 +86,7 @@
                 <span class="" style="color:rgb(226, 226, 226)">|</span>
 
                 <i class="icon grey checkmark"></i>
-                <span style="color:#bbbbbb"> {{ article.favs }} people got it</span>
+                <span style="color:#bbbbbb"> {{ article.likes }} people got it</span>
 
             </div>
             {% endfor %}
@@ -72,15 +94,40 @@
         </div>
     </div>
 
+
     <div class="ui center aligned very padded vertical segment container">
         <div class="ui pagination menu">
-            <a href="#" class="item">
-                <i class="icon red left arrow"></i>
-            </a>
+            {% if article_list.has_previous %}
+                <a href="?page={{ article_list.previous_page_number }}" class="item">
+                    <i class="icon red left caret"></i>
+                </a>
+            {% else %}
+                <a href="?page={{ article_list.start_index }}" class="disabled item">
+                    <i class="icon  left caret"></i>
+                </a>
+            {% endif %}
 
-            <a href="#" class="item">
-                <i class="icon red right arrow"></i>
-            </a>
+            {% for page_number in article_list.paginator.page_range %}
+                {% ifequal page_number  article_list.number %}
+                    <a href="?page={{ page_number }}" class="active item" style="background-color: red; color:white">
+                        {{ page_number }}
+                    </a>
+                {% else %}
+                    <a href="?page={{ page_number }}" class=" item">
+                        {{ page_number }}
+                    </a>
+                {% endifequal %}
+            {% endfor %}
+
+            {% if  article_list.has_next %}
+                <a href="?page={{ article_list.next_page_number }}" class="item">
+                    <i class="icon red right caret"></i>
+                </a>
+            {% else %}
+                <a href="?page={{ article_list.paginator.num_pages }}" class="disabled item">
+                    <i class="icon  right caret"></i>
+                </a>
+            {% endif %}
         </div>
     </div>
 </body>

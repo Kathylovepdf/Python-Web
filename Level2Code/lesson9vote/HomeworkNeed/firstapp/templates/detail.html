@@ -1,5 +1,4 @@
 {% load staticfiles %}
-{% load replace %}
 
 <!DOCTYPE html>
 <html>
@@ -18,48 +17,95 @@
             </div>
 
             <div class="right menu">
+              {% if request.user.is_authenticated %}
                 <div class="item">
                     <h5 class="ui inverted header">
                             <div class="ui mini circular image">
-                                <img src="{% static 'images/elan-1623088__340.jpg' %}" alt="">
+                                {% if request.user.profile.profile_image %}
+                                    <img src="/upload//{{request.user.profile.profile_image}}" alt="">
+                                {% else %}
+                                    <img src="{% static 'images/default.png' %}" alt="">
+                                {% endif %}
+
                             </div>
 
-                            <span>admin</span>
+                            <span>{{request.user.username}}</span>
 
                         </h5>
                 </div>
-            
+
+                <div class="item">
+                    <a href="{% url 'logout' %}" class="ui inverted circular button">Logout</a>
+                </div>
+              {% else %}
+                <div class="item">
+                    <h5 class="ui inverted header">
+                            <!-- <div class="ui mini circular image">
+                                <img src="{% static 'images/default.png' %}" alt="">
+                            </div> -->
+
+                            <span></span>
+
+                        </h5>
+                </div>
+
                 <div class="item">
                     <a href="{% url 'login' %}" class="ui inverted circular button">Signup/Login</a>
                 </div>
+
+              {% endif %}
+
             </div>
         </div>
 
-        <div class="ui vertical inverted detail segment" style="background-image: url({% static 'images/detail.jpg' %})"></div>
+        <div class="ui vertical inverted detail segment" style="background-image: url({% static 'images/super_blur_back2.jpg' %})"></div>
 
-        <div class="ui basic segment container">
+        <div class="ui basic segment container"  style="width:700px;border:none;box-shadow:none;margin-top:50px;">
             <h1 class="ui header">{{ article.title }}</h1>
             <i class="icon grey unhide"></i>
             <span style="color:#bbbbbb">{{ article.views }}</span>
             <span class="" style="color:rgb(226, 226, 226)">|</span>
             <i class="icon grey checkmark"></i>
-            <span style="color:#bbbbbb">{{ article.favs }} people got it</span>
-            
+            <span style="color:#bbbbbb">{{article.likes}} people got it</span>
+
             <p>
                 {{ article.content }}
             </p>
             <div class="ui divider"></div>
-            <form class="ui form" action="#" method="post">
-                <button class="ui  tiny button" type="submit" name="vote" value="like" >
-                    <i class="icon checkmark"></i>
-                    Get it!
-                </button>
+            <form class="ui form" action="{% url 'vote' article.id %}" method="post">
+                {% if user_ticket_for_article.choice == 'like' %}
+                  <button class="ui  red tiny  button" type="submit" name="vote" value="like" >
+                      <i class="icon checkmark"></i>
+                      Get it!
+                  </button>
 
-                <button class="ui  tiny button" type="submit" name="vote" value="dislike" >
-                    <i class="icon bomb"></i>
-                    Hmmm...
-                </button>                
+                  <button class="ui  tiny button" type="submit" name="vote" value="dislike" >
+                      <i class="icon bomb"></i>
+                      Hmmm...
+                  </button>
+                {% elif user_ticket_for_article.choice == 'dislike' %}
+                  <button class="ui  tiny button" type="submit" name="vote" value="like" >
+                      <i class="icon checkmark"></i>
+                      Get it!
+                  </button>
 
+                  <button class="ui  red tiny button" type="submit" name="vote" value="dislike" >
+                      <i class="icon bomb"></i>
+                      Hmmm...
+                  </button>
+                {% else %}
+                  <button class="ui  tiny button" type="submit" name="vote" value="like" >
+                      <i class="icon checkmark"></i>
+                      Get it!
+                  </button>
+
+                  <button class="ui tiny button" type="submit" name="vote" value="dislike" >
+                      <i class="icon bomb"></i>
+                      Hmmm...
+                  </button>
+                {% endif %}
+
+                {% csrf_token %}
                 <button class="ui secondary circular tiny right floated pin icon button">
                     <i class="pin icon"></i>
                     Saved
@@ -71,6 +117,25 @@
         <!-- Comments&Form's here -->
         <div class="ui segment container" style="width:700px;border:none;box-shadow:none">
             <h3 class="ui horizontal  divider header" style="">Comments</h3>
+            <div class="ui comments" style="border:none">
+                {% for comment in article.under_comments.all %}
+                    <div class="comment">
+                        <div class="avatar">
+                            <img src="http://semantic-ui.com/images/avatar/small/matt.jpg"  alt="" />
+                        </div>
+                        <div class="content">
+                            <a href="#" class="author">{{ comment.name }}</a>
+                            <div class="metadata">
+                                <div class="date">2 days ago</div>
+                            </div>
+                            <p class="text" style="font-family: 'Raleway', sans-serif;">
+                                {{ comment.comment }}
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="ui divider"></div>
             <form class="ui error tiny form" action="{% url 'comment' article.id %}" method="post">
                 {% if form.errors %}
                     <div class="ui error message">

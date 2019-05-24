@@ -10,12 +10,18 @@ def comment_validator(comment):
         if keyword in comment:
             raise ValidationError("Your comment contains invalid words,please check it again.")
 
+
 class CommentForm(forms.Form):
     name = forms.CharField(max_length=50)
     comment = forms.CharField(
         widget=forms.Textarea(),
-        error_messages = {
+        error_messages={
             "required": 'wow, such words'
             },
-        validators = [word_validator, comment_validator]
+        validators=[word_validator, comment_validator]
         )
+
+
+# class LoginForm(forms.Form):
+#     username = forms.CharField()
+#     password = forms.CharField()
