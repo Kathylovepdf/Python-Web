@@ -29,44 +29,60 @@
 
         </style>
     </head>
-    <body>
+    <body id="app">
 
         <div class="ui  segment padded container" >
             <h1 class="ui header">
-                Lorem ipsum dolor sit amet, consectetur.
+                {{article.title}}
 
             </h1>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                {{article.content}}
             </p>
         </div>
 
         <!-- Comments&Form's here -->
         <div class="ui segment container" style="width:700px;">
             <h3 class="ui header" style="font-family:'Oswald', sans-serif;">Comments</h3>
-            <div v-for="comment in comments" class="ui comments">
-                <div class="comment">
+            <div class="ui comments">
+                <div v-for="comment in comments" class="comment">
                     <div class="avatar">
                         <img src="images/matt.jpg" alt="" />
                     </div>
                     <div class="content">
-                        <a href="#" class="author">John Doe</a>
+                        <a href="#" class="author">{{comment.name}}</a>
 
                         <p class="text" style="font-family: 'Raleway', sans-serif;">
-                            Great one!
+                            {{comment.said}}
                         </p>
                     </div>
                 </div>
 
             </div>
             <div class="ui divider"></div>
-
+            <div class="ui header">你还可以输入{{200-message.length}}字</div>
             <form class="ui form" action="index.html" method="post">
-                <input type="text">
+                <input v-model= "message" type="text">
             </form>
         </div>
 
         <script>
+            var vm = new Vue({
+                el:"#app",
+                data:{
+                    article:{
+                        title:"This is a title",
+                        content:"Hi,Jack!"
+                    },
+                    comments:[
+                      {name:"Jack",said:"You are good!"},
+                      {name:"Jack",said:"You are good!"},
+                      {name:"Jack",said:"You are good!"},
+                      {name:"Jack",said:"You are good!"},
+                      {name:"Jack",said:"You are good!"},
+                    ]
+                }
+        })
         </script>
 
     </body>

@@ -3,12 +3,17 @@
     <head>
         <meta charset="utf-8">
         <title>Shopping</title>
+        <script type="text/javascript" src="js/vue1.js" ></script>
         <link rel="stylesheet" href="css/semantic.css"  media="screen" title="no title" charset="utf-8">
+        <!--<link rel="stylesheet" href="css/semantic.min.css"  media="screen" title="no title" charset="utf-8">-->
+
         <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway" rel="stylesheet">
+        <link rel="stylesheet" href="css/animate.css" />
         <style type="text/css">
             body {
             font-family: 'Raleway', sans-serif;
             }
+
 
             .ui.container.nav {
             width: 500px;
@@ -31,14 +36,59 @@
 
         </style>
     </head>
-    <body>
+    <body id="app">
+    	<style v-if="showstatus">
+    		.dim{
+        transition-duration: 0.5s, 0.5s;
+        -webkit-transform: translate3d(0, 0, 0) !important;
+				transform: translate3d(0, 0, 0) !important;
+            }
+    		.dimm{
+      	position:absolute;
+      	z-index:-1;
+            }
+    		.push.visible{
+  			display: none;
+    		}
+    		.trs{
+  			position:relative;
+  			z-index:1000;
+    		}
+    	</style>
+    	<style v-else>
+    		.animated{
+  			-webkit-animation-duration: 0.5s;
+				animation-duration: 0.5s;
+				-webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
+    		}
+    		.dim{
+      	transition-duration: 0.5s, 0.5s;
+      	-webkit-transform: translate3d(0, 82px, 0) !important;
+				transform: translate3d(0, 82px, 0) !important;
+            }
+        .dimm{
+      	position:absolute;
+      	background-color: rgba(0, 0, 0, 0.4);
+      	z-index:100;
+      	height:100%;
+      	width:100%;
+        }
+        .push.visible{
+
+    		}
+    		.trs{
+
+    		}
+    	</style>
         <div class="ui center aligned masthead container">
             <div class="ui text left floated menu">
-                <button class="ui black button" style="opacity:0.7;">分类</button>
+                <button v-on:click="showmenu" class="ui black button trs" style="opacity:0.7;">分类</button>
             </div>
 
         </div>
-        <div class="ui top demo sidebar ui segment push visible">
+
+        <div class="ui top demo sidebar ui segment push visible animated fadeInDown">
             <div class="ui center aligned page grid">
                 <div class="one column row">
                     <div class="sixteen wide column">
@@ -70,6 +120,8 @@
         </div>
 
 
+    <div class="pusher dim">
+		<div class="dimm"  v-on:click="hidemenu"></div>
         <div class="ui container nav">
             <div class="ui borderless text three item menu ">
                 <div class="ui simple dropdown  item" style="top: 70%;">
@@ -204,8 +256,25 @@
 
               </div>
           </div>
+        </div>
 
+        <script>
+          	var vm = new Vue({
+          		el:"#app",
+          		data:{
+          			showstatus:true,
+          		},
+          		methods:{
+          			showmenu:function(){
+          				this.showstatus = false;
 
+          			},
+          			hidemenu:function(){
+          				this.showstatus = true;
+          			}
+          		}
+          	})
+        </script>
 
     </body>
 </html>

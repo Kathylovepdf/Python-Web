@@ -34,22 +34,22 @@
                 <div class="ui simple dropdown  item" style="top: 70%;">
                     {{ demo1.name }}
                     <i class="dropdown icon"></i>
-                    <div  class="menu">
-                        <a class="item" v-for="me1 in demo1.body" href="#">{{ me1.name }}</a>
+                    <div  v-for="me1 in demo1.body" class="menu">
+                        <a class="item" href="#">{{ me1.name }}</a>
                     </div>
                 </div>
                 <div class="ui simple dropdown  item" style="top: 70%;">
                     {{ demo2.name }}
                     <i class="dropdown icon"></i>
-                    <div class="menu" >
-                        <a class="item" v-for="me2 in demo2.body" href="#">{{ me2.name }}</a>
+                    <div v-for="me2 in demo2.body" class="menu" >
+                        <a class="item" href="#">{{ me2.name }}</a>
                     </div>
                 </div>
                 <div class="ui simple dropdown  item" style="top: 70%;">
                     {{ demo3.name }}
                     <i class="dropdown icon"></i>
-                    <div class="menu">
-                    	<a class="item" v-for="me3 in demo3.body" href="#">{{ me3.name }}</a>
+                    <div v-for="me3 in demo3.body" class="menu">
+                    	<a class="item" href="#">{{ me3.name }}</a>
                     </div>
                 </div>
 
@@ -157,7 +157,7 @@
 
             </div>
         </div>
-        
+
         <script>
         	var vm = new Vue({
         		el:"#app",
@@ -167,7 +167,7 @@
         				body:[
         					{name:"Rihanna"},
 	        				{name:"Victoria Beckham"},
-	        				{name:"Emma Roberts"},
+	        				{name:"Emma Roberts"}
         				]
         			},
         			demo2:{
@@ -175,7 +175,7 @@
         				body:[
         					{name:"黑五大促"},
 	        				{name:"双十一返场"},
-	        				{name:"双十二预热"},
+	        				{name:"双十二预热"}
         				]
         			},
         			demo3:{
@@ -184,10 +184,10 @@
         					{name:"Equipment"},
 	        				{name:"Everlane"},
 	        				{name:"Alexander Wang"},
-	        				{name:"Michael Kors"},
+	        				{name:"Michael Kors"}
         				]
-        			},
-        		},
+        			}
+        		}
         	})
         </script>
 

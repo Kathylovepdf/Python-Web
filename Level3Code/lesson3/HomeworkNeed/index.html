@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
         <title>Shopping</title>
+        <!-- <script type="text/javascript" href="./js/vue1.js"></script> -->
+        <script type="text/javascript" src="js/vue1.js" ></script>
         <link rel="stylesheet" href="css/semantic.css"  media="screen" title="no title" charset="utf-8">
         <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway" rel="stylesheet">
         <style type="text/css">
@@ -27,36 +29,28 @@
             }
         </style>
     </head>
-    <body>
+    <body id="app">
         <div class="ui container nav">
             <div class="ui borderless text three item menu ">
                 <div class="ui simple dropdown  item" style="top: 70%;">
-                    明星同款
+                    {{ demo1.name }}
                     <i class="dropdown icon"></i>
-                    <div class="menu">
-                        <a class="item" href="#">Taylor Swift</a>
-                        <a class="item" href="#">Rihanna</a>
-                        <a class="item" href="#">Victoria Beckham</a>
-                        <a class="item" href="#">Emma Roberts</a>
+                    <div class="menu" v-bind:key="me1.name">
+                        <a  v-for="me1 in demo1.body" class="item" href="#">{{me1.name}}</a>
                     </div>
                 </div>
                 <div class="ui simple dropdown  item" style="top: 70%;">
-                    精选活动
+                    {{ demo2.name }}
                     <i class="dropdown icon"></i>
                     <div class="menu">
-                        <a class="item" href="#">黑五大促</a>
-                        <a class="item" href="#">双十一返场</a>
+                        <a  v-for="me2 in demo2.body" class="item" href="#">{{me2.name}}</a>
                     </div>
                 </div>
                 <div class="ui simple dropdown  item" style="top: 70%;">
-                    推荐品牌
+                    {{ demo3.name }}
                     <i class="dropdown icon"></i>
                     <div class="menu">
-                        <a class="item" href="#">Equipment</a>
-                        <a class="item" href="#">Everlane</a>
-                        <a class="item" href="#">Michael Kors</a>
-                        <a class="item" href="#">Alexander Wang</a>
-                        <a class="item" href="#">Massimo Dutti</a>
+                        <a v-for="me3 in demo3.body" class="item" href="#">{{me3.name}}</a>
                     </div>
                 </div>
 
@@ -166,6 +160,39 @@
         </div>
 
 
+        <script>
+            var vm = new Vue({
+              el:"#app",
+              data:{
+                demo1:{
+                    name:"明星同款",
+                    body:[
+                      {name:"Taylor Swift"},
+                      {name:"Rihanna"},
+                      {name:"Victoria Beckham"},
+                      {name:"Emma Roberts"}
+                    ]
+                },
+                demo2:{
+                    name:"精选活动",
+                    body:[
+                      {name:"黑五大促"},
+                      {name:"双十一返场"},
+                      {name:"双十二预热"}
+                    ]
+                },
+                demo3:{
+                    name:"推荐品牌",
+                    body:[
+                      {name:"Equipment"},
+                      {name:"Everlane"},
+                      {name:"Alexander Wang"},
+                      {name:"Michael Kors"}
+                    ]
+                }
+            }
 
+          })
+        </script>
     </body>
 </html>

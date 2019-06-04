@@ -6,7 +6,8 @@
         <script type="text/javascript" src="js/vue1.js"></script>
         <link rel="stylesheet" href="css/semantic.css" media="screen" title="no title" charset="utf-8">
         <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway" rel="stylesheet">
-
+    </head>
+    <body id="app">
         <style type="text/css">
             .ui.segment.container {
                 width:700px;
@@ -17,7 +18,7 @@
 
             p {
                 font-family: 'Raleway', sans-serif;
-                font-size:18px;
+                font-size:{{article.fontsize}}px;
             }
 
             body {
@@ -28,16 +29,17 @@
             }
 
         </style>
-    </head>
-    <body id="app">
 
         <div class="ui  segment padded container" >
+            <button v-on:click="article.fontsize+=3" class="ui left top attachment lable" type="button" name="button">
+                +
+            </button>
             <h1 class="ui header">
                 {{ article.title }}
-
             </h1>
             <p>
                 {{ article.content }}
+                {{article.fontsize}}
             </p>
         </div>
 
@@ -45,17 +47,22 @@
         <div class="ui segment container" style="width:700px;">
             <h3 class="ui header" style="font-family:'Oswald', sans-serif;">Comments</h3>
             <div v-for="comment in comments" class="ui comments">
-                <div class="comment">
+                <div v-if="comment.show" class="comment">
                     <div class="avatar">
                         <img src="images/matt.jpg" alt="" />
                     </div>
                     <div class="content">
                         <a href="#" class="author">{{ comment.name }}</a>
-
                         <p class="text" style="font-family: 'Raleway', sans-serif;">
                             {{ comment.said }}
                         </p>
+                        <div class="actions">
+                            <a v-on:click="comment.show=!comment.show" href="#">spam</a>
+                        </div>
                     </div>
+                </div>
+                <div v-else  class="comment">
+                    OPPS!
                 </div>
 
             </div>
@@ -75,13 +82,14 @@
                     // context["article"] = article
                     article:{
                         title:"This is a title",
-                        content:"Hi there!"
+                        content:"Hi there!",
+                        fontsize:18
                     },
                     comments:[
-                        {name:"John Doe",said:"Great!"},
-                        {name:"John Doe",said:"Great!"},
-                        {name:"John Doe",said:"Great!"},
-                        {name:"John Doe",said:"Great!"},
+                        {name:"John Doe",said:"Great!",show:"true"},
+                        {name:"John Doe",said:"Great!",show:"true"},
+                        {name:"John Doe",said:"Great!",show:"true"},
+                        {name:"John Doe",said:"Great!",show:"true"},
                     ]
                 }
             })
