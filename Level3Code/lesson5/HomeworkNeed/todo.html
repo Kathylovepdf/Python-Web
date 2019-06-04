@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>ToDo</title>
         <link rel="stylesheet" href="css/semantic.css"  media="screen" title="no title" charset="utf-8">
+        <script type="text/javascript" src="js/vue1.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway" rel="stylesheet">
         <style type="text/css">
             body {
@@ -21,9 +22,12 @@
             .ui.very.padded.container {
             width: 500px;
             }
+            p{
+
+            }
         </style>
     </head>
-    <body>
+    <body id="app">
         <div class="ui very padded container">
             <div class="ui text menu">
                 <div class="header item" style="font-size:20px;">
@@ -38,39 +42,51 @@
         </div>
         <div class="ui very padded segment container">
             <div class="ui action fluid input">
-                <input type="text" placeholder="添加新任务">
-                <button class="ui icon basic button">
+                <input v-model="newmessage" type="text" placeholder="添加新任务">
+                <button class="ui icon basic button" v-on:click="Addlist(newmessage)">
                     <i class="plus icon" style="color:#666666"></i>
                 </button>
             </div>
 
-            <div class="ui relaxed divided list">
-                <div class="item">
+            <div v-for = "list in todolist" class="ui relaxed divided list">
+
+                <div class="item" v-if = list.show>
                     <div class="right floated content">
-                        <i class="remove icon"></i>
+                        <i class="remove icon" v-on:click="list.show=!list.show"></i>
                     </div>
-                    <p style="font-size:14px;">整理明日计划</p>
+                    <p style="font-size:14px;" v-on:click="list.co=!list.co" v-if="list.co">{{list.listname}}</p>
+                    <p style="font-size:14px;" v-on:click="list.co=!list.co" v-else><s>{{list.listname}}</s></p>
                 </div>
-                <div class="item">
-                    <div class="right floated content">
-                        <i class="remove icon"></i>
-                    </div>
-                    <p style="font-size:14px;">修改Bug</p>
-                </div>
-                <div class="item">
-                    <div class="right floated content">
-                        <i class="remove icon"></i>
-                    </div>
-                    <p style="font-size:14px;"><s>提交全栈课程的作业</s></p>
-                </div>
-                <div class="item">
-                    <div class="right floated content">
-                        <i class="remove icon"></i>
-                    </div>
-                    <p style="font-size:14px;">分享学习笔记</p>
-                </div>
+
             </div>
         </div>
+
+        <script>
+            var vm = new Vue({
+              el:"#app",
+              data:{
+                  todolist:[
+                      {listname:"整理明日计划",co:"true",show:"true"},
+                      {listname:"修改Bug",co:"true",show:"true"},
+                      {listname:"提交全栈课程的作业",co:"true",show:"true"},
+                      {listname:"分享学习笔记",co:"true",show:"true"}
+                  ]
+              },
+              methods:{
+                  Addlist:function(message){
+                      if (message == ""){
+                          alert("不要提交空内容额")
+                      }
+                      else{
+                          this.todolist.push({listname:message,co:"true",show:"true"})
+                    }
+
+                  }
+
+              }
+        })
+
+        </script>
 
     </body>
 </html>

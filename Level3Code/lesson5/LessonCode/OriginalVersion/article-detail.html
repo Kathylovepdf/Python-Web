@@ -5,6 +5,7 @@
         <title></title>
         <script type="text/javascript" src="js/vue1.js"></script>
         <link rel="stylesheet" href="css/semantic.css" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="css/animate.css">
         <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway" rel="stylesheet">
 
 
@@ -32,6 +33,12 @@
 
         </style>
 
+        <div class="ui fadeIn dimmer active" v-if="!modal.show" v-on:click="modalSwitch">
+            <div class="ui modal active">
+                <h3 class="ui header">This is a header !</h3>
+            </div>
+        </div>
+
         <div class="ui  segment padded container" >
             <button v-on:click="article.fontSize+=5" class="ui top left attached label" type="button" name="button">
                 +
@@ -44,6 +51,7 @@
             <p>
                 {{ article.content }}
             </p>
+            <button type="button" name="button" class="ui inverted blue button" v-on:click="modalSwitch">click me</button>
         </div>
 
         <!-- Comments&Form's here -->
@@ -85,6 +93,9 @@
                 el:"#app",
                 // context
                 data:{
+                    modal:{
+                        show:"false"
+                    },
                     // context["article"] = article
                     article:{
                         title:"This is a title",
@@ -97,6 +108,14 @@
                         {name:"John Doe",said:"Great!",show:true},
                         {name:"John Doe",said:"Great!",show:true},
                     ]
+                },
+                methods:{
+                    modalSwitch:function(){
+                        this.modal.show=!this.modal.show
+                    }
+                },
+                ready:function(){
+                    this.modalSwitch()
                 }
             })
         </script>
