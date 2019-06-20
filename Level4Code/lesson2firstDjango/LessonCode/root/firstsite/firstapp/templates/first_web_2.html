@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>first web</title>
+        <link rel="stylesheet" href="{% static 'css/semantic.css' %}"  media="screen" title="no title" charset="utf-8">
+        <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway" rel="stylesheet">
+    </head>
+    <body>
+        {% for article in article_list %}
+            <p>{{article}}</p>
+        {% endfor %}
+    </body>
+</html>

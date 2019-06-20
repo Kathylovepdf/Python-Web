@@ -1,0 +1,23 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'css/semantic.css' %}" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="{% static  'css/list_custom.css' %}" media="screen" title="no title" charset="utf-8">
+
+</head>
+
+<body>
+    {% for article in article_list %}
+    <div>
+        <span>{{article.title}}</span>
+        <span>{{article.likes}}</span>
+    </div>
+</body>
+
+</html>

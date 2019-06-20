@@ -19,7 +19,7 @@ from website.views import listing, index_login, index_register, detail, detail_v
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import logout
-
+from website.api import video
 from website.mobile_views import video_list
 
 
@@ -33,7 +33,7 @@ urlpatterns = [
     url(r'^login/$', index_login, name='login'),
     url(r'^register/$', index_register, name='register'),
     url(r'^logout/$', logout, {'next_page': '/register'}, name='logout'),
-
+    url(r'^api/video/', video),
     url(r'^m/videolist/', video_list),
 
 

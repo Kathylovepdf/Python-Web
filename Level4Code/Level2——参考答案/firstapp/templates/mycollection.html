@@ -1,0 +1,125 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="{% static 'css/semantic.css' %}" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="{% static 'css/myinfo.css' %} "media="screen" title="no title">
+        <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway" rel="stylesheet">
+
+    </head>
+    <body>
+        <div class="ui inverted top fixed menu borderless red menu">
+            <div class="header item">
+                <div class="ui image">
+                    <a href="{% url 'index' %}">
+                        <img src="{% static 'images/tenlogo.png' %}" alt=""alt="">
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="right menu">
+                {% if request.user.is_authenticated %}
+                    <div class="item">
+                        <h5 class="ui inverted header">
+                            <a href="{% url 'profile' %}">
+                                <div class="ui mini circular image">
+                                    {% if request.user.profile.avatar %}
+                                        <img src="/upload/{{ request.user.profile.avatar }}" alt="" />
+                                    {% else %}
+                                        <img src="{% static  'images/default.png' %}" alt="" />
+                                    {% endif %}
+                                </div>
+                            </a>
+
+                            {% if request.user.profile.name %}
+                                <span>{{ request.user.profile.name }}</span>
+                            {% else %}
+                                <span>{{ request.user.username }}</span>
+                            {% endif %}
+                        </h5>
+                    </div>
+                    <div class="item">
+                        <a href="{% url 'logout' %}" class="ui inverted circular button">Logout</a>
+                    </div>
+
+                {% else %}
+
+                    <div class="item">
+                        <a href="{% url 'login' %}" class="ui inverted circular button">Signup/Login</a>
+                    </div>
+                {% endif %}
+            </div>
+      </div>
+
+
+            <div class="ui  raised container segments">
+            <div class="ui head basic segment" style="background-image: url({% static 'images/bg.png' %});">
+            </div>
+            <div class="ui bottom inverted  six item attached menu">
+
+                <div class="item">
+                    <a href="{% url 'profile' %}">个人资料</a>
+                </div>
+                <div class="active item">
+                    我赞过的
+                </div>
+            </div>
+
+            <div class="ui butt segment">
+                <div class="ui basic very padded segment container info" style="width:530px;">
+                    {% for article in article_like_list %}
+                    <a href="{% url 'detail' article.id %}">
+                        <img class="ui top aligned tiny image" src="{{ article.img }}" style="width:80px;height:55px;">
+                    </a>
+                    <a href="{% url 'detail' article.id %}">
+                        <span>{{ article.title }}</span>
+                    </a>
+                    <div class="ui divider"></div>
+                    {% endfor %}
+                </div>
+
+                <div class="ui center aligned very padded vertical segment container">
+                    <div class="ui pagination menu">
+                        {% if article_like_list.has_previous %}
+                            <a href="?page={{ article_like_list.previous_page_number }}" class="item">
+                                <i class="icon red left arrow"></i>
+                            </a>
+                        {% else %}
+                            <a href="?page={{ article_like_list.start_index }}" class="disabled item">
+                                <i class="icon  left arrow"></i>
+                            </a>
+                        {% endif %}
+
+                        {% for page_number in article_like_list.paginator.page_range %}
+                            {% ifequal page_number  article_like_list.number %}
+                                <a href="?page={{ page_number }}" class="active item" style="background-color: #F2F2F2; color:dack">
+                                    {{ page_number }}
+                                </a>
+                            {% else %}
+                                <a href="?page={{ page_number }}" class=" item">
+                                    {{ page_number }}
+                                </a>
+                            {% endifequal %}
+                        {% endfor %}
+
+                        {% if  article_like_list.has_next %}
+                            <a href="?page={{ article_like_list.next_page_number }}" class="item">
+                                <i class="icon red right arrow"></i>
+                            </a>
+                        {% else %}
+                            <a href="?page={{ article_like_list.paginator.num_pages }}" class="disabled item">
+                                <i class="icon  right arrow"></i>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </body>
+</html>

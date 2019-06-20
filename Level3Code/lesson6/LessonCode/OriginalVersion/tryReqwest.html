@@ -6,6 +6,22 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/reqwest/2.0.5/reqwest.js"></script>
     </head>
     <body>
+        <h1>This is a header !!</h1>
+
+
+        <script>
+            var a={};
+            reqwest({
+                url:"https://swapi.co/api/people/1",
+                type:"json",
+                method:"get",
+                data:"{}",
+                success:function(resp){
+                        a=resp
+                }
+            })
+
+        </script>
 
     </body>
 </html>
